@@ -9,7 +9,7 @@
  */
 class ChosenDropdownField extends DropdownField {
 
-	
+
 
 	/**
 	 * @var int The number of items that need to appear in the dropdown
@@ -17,7 +17,39 @@ class ChosenDropdownField extends DropdownField {
 	 */
 	public static $default_search_threshold = 12;
 
+	/**
+	 * Adds text immediately to the left, abut the form field
+	 *
+	 * @param string $text The text to add
+	 * @return BootstrapTextField
+	 */
+	public function prependText($text) {
+		$this->owner->PrependedText = $text;
+		return $this->owner;
+	}
 
+
+
+	/**
+	 * Adds text immediately to the right, abut the form field
+	 *
+	 * @param string $text The text to add
+	 * @return BootstrapTextField
+	 */
+	public function appendText($text) {
+		$this->owner->AppendedText = $text;
+		return $this->owner;
+	}
+
+	public function prependTag($text) {
+		$this->owner->PrependedTag = $text;
+		return $this->owner;
+	}
+
+	public function appendTag($text) {
+		$this->owner->AppendedTag = $text;
+		return $this->owner;
+	}
 
 	/**
 	 * Sets the search threshold for this dropdown
@@ -26,7 +58,7 @@ class ChosenDropdownField extends DropdownField {
 	 * @return ChosenDropdownField
 	 */
 	public function setSearchThreshold($num) {
-		return $this->setAttribute('data-search-threshold', $num);		
+		return $this->setAttribute('data-search-threshold', $num);
 	}
 
 
@@ -38,8 +70,8 @@ class ChosenDropdownField extends DropdownField {
 	 * @return SSViewer
 	 */
 	public function FieldHolder($attributes = array ()) {
-		Requirements::javascript(FRAMEWORK_DIR."/admin/thirdparty/chosen/chosen/chosen.jquery.js");
-		Requirements::css(FRAMEWORK_DIR."/admin/thirdparty/chosen/chosen/chosen.css");
+		Requirements::javascript("mysite/javascript/chosen/chosen/chosen.jquery.min.js");
+		Requirements::css("mysite/javascript/chosen/chosen/chosen.css");
 		$this->addExtraClass('chosen');
 		if(!$this->getAttribute('data-search-threshold')) {
 			$this->setSearchThreshold(self::$default_search_threshold);

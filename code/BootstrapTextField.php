@@ -34,7 +34,15 @@ class BootstrapTextField extends BootstrapFormField {
 		return $this->owner;
 	}
 
+	public function prependTag($text) {
+		$this->owner->PrependedTag = $text;
+		return $this->owner;
+	}
 
+	public function appendTag($text) {
+		$this->owner->AppendedTag = $text;
+		return $this->owner;
+	}
 
 	/**
 	 * Sets the width of the text field to a pre-configured size. Options include:

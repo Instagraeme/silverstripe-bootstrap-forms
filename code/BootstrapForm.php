@@ -11,8 +11,8 @@
  * @package boostrap_forms
  */
 class BootstrapForm extends Form {
-	
-	
+
+
 	/**
 	 * @var bool If true, the Bootstrap CSS will not be included in order
 	 *			to avoid collisions
@@ -80,24 +80,24 @@ class BootstrapForm extends Form {
 
 			// If we have a Tabset, bootstrapify all Tabs
 			if($f instanceof TabSet) {
-				self::apply_bootstrap_to_fieldlist($f->Tabs());				
+				self::apply_bootstrap_to_fieldlist($f->Tabs());
 			}
 
 			// If we have a Tab, bootstrapify all its Fields
 			if($f instanceof Tab) {
 				self::apply_bootstrap_to_fieldlist($f->Fields());
 			}
-			
 
-			$template = "Bootstrap{$f->class}_holder";			
-			if(SSViewer::hasTemplate($template)) {					
-				$f->setFieldHolderTemplate($template);				
+
+			$template = "Bootstrap{$f->class}_holder";
+			if(SSViewer::hasTemplate($template)) {
+				$f->setFieldHolderTemplate($template);
 			}
-			else {				
+			else {
 				$f->setFieldHolderTemplate("BootstrapFieldHolder");
 			}
 
-			foreach(array_reverse(ClassInfo::ancestry($f)) as $className) {						
+			foreach(array_reverse(ClassInfo::ancestry($f)) as $className) {
 				$bootstrapCandidate = "Bootstrap{$className}";
 				$nativeCandidate = $className;
 				if(SSViewer::hasTemplate($bootstrapCandidate)) {
@@ -109,7 +109,7 @@ class BootstrapForm extends Form {
 					break;
 				}
 			}
-		}		
+		}
 	}
 
 
@@ -186,7 +186,7 @@ class BootstrapForm extends Form {
 		if(!$this->stat('jquery_included')) {
 			Requirements::javascript(THIRDPARTY_DIR."/jquery/jquery.js");
 		}
-		Requirements::javascript("bootstrap_forms/javascript/bootstrap_forms.js");
+		//Requirements::javascript("bootstrap_forms/javascript/bootstrap_forms.js");
 		$this->addExtraClass("form-{$this->formLayout}");
 		$this->applyBootstrap();
 		return parent::forTemplate();

@@ -1,6 +1,9 @@
+<% if PrependedTag %>
+$PrependedTag
+<% end_if %>
 <div id="$Name" class="$HolderClasses" $HolderAttributes>
     <label class="control-label" for="$ID">$Title</label>
-    <div class="controls">    
+    <div class="controls">
         <% if AppendedText || PrependedText %>
         	<div class="<% if AppendedText %>$input-append<% end_if %><% if PrependedText %> input-prepend<% end_if %>">
         		<% if PrependedText %><span class="add-on">$PrependedText</span><% end_if %>$Field<% if AppendedText %><span class="add-on">$AppendedText</span><% end_if %>
@@ -18,3 +21,6 @@
 
     </div>
 </div>
+<% if AppendedTag %>
+$AppendedTag
+<% end_if %>

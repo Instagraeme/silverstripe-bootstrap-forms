@@ -10,7 +10,7 @@
 class BootstrapFormAction extends DataExtension {
 
 
-	/** 
+	/**
 	 * Sets the style of button. Options include:
 	 * 	- "success"
 	 *  - "danger"
@@ -29,7 +29,7 @@ class BootstrapFormAction extends DataExtension {
 
 
 
-	/** 
+	/**
 	 * Sets the size of the button. Options include:
 	 * 	- "large"
 	 *  - "small"
@@ -43,5 +43,9 @@ class BootstrapFormAction extends DataExtension {
 		return $this->owner;
 	}
 
+	public function setIcon($icon) {
+		$this->owner->ButtonIcon = trim(strtolower($icon));
+		return $this->owner;
+	}
 
 }
